@@ -1,0 +1,1 @@
+import{ba as i}from"./chunk-SVRTX5CE.js";var n=class e{transform(r,t){return r.split(" ").slice(0,t).join(" ")}static \u0275fac=function(t){return new(t||e)};static \u0275pipe=i({name:"cuttext",type:e,pure:!0,standalone:!0})};export{n as a};
