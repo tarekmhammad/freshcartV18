@@ -1,0 +1,56 @@
+@if (productDetails) {
+<section class="my-4 w-75 mx-auto rounded p-3">
+  <div class="row align-items-center g-4">
+    <div class="col-md-3">
+      <owl-carousel-o [options]="productDetailsOptions">
+        @for (path of productDetails.images; track $index) {
+        <ng-container>
+          <ng-template carouselSlide>
+            <img [src]="path" />
+          </ng-template>
+        </ng-container>
+        }
+      </owl-carousel-o>
+    </div>
+    <div class="col-md-9">
+      <div class="productInfo">
+        <h2 class="h5">{{ productDetails.title }}</h2>
+        <p class="text-muted small">{{ productDetails.description }}</p>
+        <span>{{ productDetails.category.name }}</span>
+        <div class="d-flex align-items-center justify-content-between my-3">
+          <span class="small">{{
+            productDetails.price | currency : "EGP"
+          }}</span>
+          <p class="mb-0">
+            <span><i class="fas fa-star rating-color"></i></span>
+            <span>{{ productDetails.ratingsAverage }}</span>
+          </p>
+        </div>
+        <footer class="d-flex justify-content-between align-items-center">
+          <button
+            #btnAdd
+            (click)="addProduct(productDetails._id, btnAdd)"
+            class="main-btn w-100"
+          >
+            + Add To Cart
+          </button>
+          @if (!wishListData.includes($any(productDetails._id))) {
+          <!-- add -->
+          <i
+            (click)="addFav(productDetails._id)"
+            class="fa-regular fa-heart ms-3 heart-details"
+          ></i>
+          }@else {
+          <!-- remove -->
+          <i
+            (click)="removeFav(productDetails._id)"
+            class="fa-solid fa-heart ms-3 heart-details text-danger"
+          ></i>
+          }
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+}

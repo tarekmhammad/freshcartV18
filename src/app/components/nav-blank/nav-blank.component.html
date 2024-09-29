@@ -1,0 +1,79 @@
+<nav #navBar class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="./assets/freshcart-logo.svg" alt="fresh cart logo" />
+    </a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="/home"
+            >Home</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/product"
+            >Product</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/brands"
+            >Brands</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active-link"
+            routerLink="/categories"
+            >Categories</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center">
+        <li class="nav-item position-relative">
+          <a class="nav-link" routerLink="/wishlist">
+            <i class="fa-solid fa-heart text-main wishlist"></i>
+            <span class="badge bg-danger position-absolute end-0 top-0">{{
+              numOfWishList
+            }}</span>
+          </a>
+        </li>
+        <li class="nav-item position-relative">
+          <a class="nav-link" routerLink="/cart">
+            <i class="fa-solid fa-cart-shopping cart text-main"></i>
+            <span class="badge bg-danger position-absolute end-0 top-0">{{
+              numOfCart
+            }}</span>
+          </a>
+        </li>
+        <li class="nav-item parent mx-2">
+          <i class="fa-solid fa-circle-user text-main"></i>
+          <ul class="child">
+            <li role="button" routerLink="/forgotpassword">
+              <a>forgot Password</a>
+            </li>
+            <li role="button"><a (click)="signOut()">sign out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+
+$main-color: #1c79c0;
+$light-color: #f0f3f2;
+$shadow: 2px 2px 15px #00bce4;
+$font-family: "Encode Sans Expanded", sans-serif;
+$rating-color: #ffc908;
+$main-transition: 0.8s;
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background-color: $light-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-color;
+}
+
+body {
+  font-family: $font-family;
+}
+.text-main {
+  color: $main-color;
+}
+.bg-main {
+  background-color: $main-color;
+}
+.bg-main-ligth {
+  background-color: $light-color;
+}
+.text-main-light {
+  color: $light-color;
+}
+.rating-color {
+  color: $rating-color;
+}
+.font-sm {
+  font-size: 11px;
+}
+
+.main-btn {
+  background-color: $main-color;
+  color: #fff;
+  border-radius: 5px;
+  border: unset;
+  cursor: pointer;
+  padding: 4px 8px;
+
+  &:disabled {
+    background-color: #1c79c089;
+    color: #ffffff9c;
+    cursor: not-allowed;
+  }
+}
+.product {
+  border-radius: 5px;
+  padding: 8px;
+  transition: all 0.5s;
+  overflow: hidden;
+  .main-btn {
+    transform: translateY(150%);
+    opacity: 0;
+    transition: 0.8s;
+  }
+  .heart {
+    font-size: 30px;
+    transform: translateY(150%);
+    opacity: 0;
+    cursor: pointer;
+    transition: all 0.8s;
+  }
+
+  &:hover {
+    box-shadow: $shadow;
+    .main-btn {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .heart {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+.main-shadow {
+  box-shadow: $shadow;
+}
+// transition: all .5s;
+// }
+
+// .product:hover {
+//   // border: 1px solid $main-color;
+//   box-shadow: $shadow;
+// }
+
+// .product:hover {
+//   box-shadow: var(--shadow);
+//   /* border: solid 1px var(--main-color); */
+// }
+
+// .product .btn {
+//   transition: transform 1s, opacity 1s;
+//   transform: translateY(100%);
+//   opacity: 0;
+// }
+
+// .product:hover .btn {
+//   opacity: 1;
+//   transform: translateY(0%);
+
+// }
+
+.active-link {
+  color: #fff !important;
+  background-color: $main-color !important;
+  border-radius: 5px !important;
+}

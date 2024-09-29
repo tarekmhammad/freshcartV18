@@ -1,0 +1,9 @@
+$shadow: 2px 2px 15px #00bce4;
+section {
+  box-shadow: $shadow;
+}
+
+.heart-details {
+  font-size: 30px;
+  cursor: pointer;
+}

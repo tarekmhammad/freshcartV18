@@ -1,0 +1,76 @@
+@if (cartDetails) {
+<section class="w-75 mx-auto rounded shadow bg-main-ligth p-3 my-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="h2">Shop Cart</h1>
+    <button (click)="clear()" class="btn btn-sm btn-outline-danger">
+      Clear Cart
+    </button>
+  </div>
+  <p class="text-main">
+    Total Price: {{ cartDetails.totalCartPrice | currency : "E£ " }}
+  </p>
+  @for (item of cartDetails.products; track $index) {
+  <div class="row py-2 border-bottom align-items-center">
+    <div class="col-md-2">
+      <img
+        class="w-100"
+        [src]="item.product.imageCover"
+        [alt]="item.product.title"
+      />
+    </div>
+    <div class="col-md-10 d-flex align-items-center justify-content-between">
+      <div>
+        <h3 class="h6">{{ item.product.title }}</h3>
+        <p class="text-main small mb-0">
+          Price: {{ item.price | currency : "E£ " }}
+        </p>
+        <button
+          (click)="removeItem(item.product._id, btnRemove)"
+          class="btn m-0 p-0 text-danger"
+          #btnRemove
+        >
+          <i class="fa-solid fa-trash-can"></i> Remove
+        </button>
+      </div>
+      <div>
+        <button
+          (click)="
+            changeCount(item.count - 1, item.product._id, btnDec, btnInc)
+          "
+          class="btn btn-sm border-info"
+          #btnDec
+        >
+          -
+        </button>
+        <span class="p-2">{{ item.count }}</span>
+        <button
+          (click)="
+            changeCount(item.count + 1, item.product._id, btnDec, btnInc)
+          "
+          class="btn btn-sm border-info"
+          #btnInc
+        >
+          +
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+  <button
+    [routerLink]="['/payment', cartDetails._id]"
+    class="main-btn mt-3 d-block ms-auto p-2"
+  >
+    Payment Now
+  </button>
+</section>
+}@else {
+<h2 class="alert alert-danger w-50 mx-auto text-center">
+  Your Cart Is Empty....
+</h2>
+}
+
+<ng-template #msg>
+  <h2 class="alert alert-danger w-50 mx-auto text-center">
+    Your Cart Is Empty....
+  </h2>
+</ng-template>

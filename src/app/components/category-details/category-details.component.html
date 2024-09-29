@@ -1,0 +1,15 @@
+<section class="w-75 mx-auto rounded bg-main-ligth p-3 main-shadow my-4">
+  <div class="row align-items-center g-4">
+    <div class="col-md-3">
+      <img
+        class="w-100"
+        [src]="categoryDetails.image"
+        [alt]="categoryDetails.name"
+      />
+    </div>
+    <div class="col-md-9">
+      <h3 class="h5">{{ categoryDetails.slug }}</h3>
+      <p class="small text-main">{{ categoryDetails.name }}</p>
+    </div>
+  </div>
+</section>

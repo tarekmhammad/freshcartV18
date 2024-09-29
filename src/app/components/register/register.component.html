@@ -1,0 +1,122 @@
+<section class="my-5 w-75 mx-auto shadow p-4 bg-main-ligth">
+  @if(errMsg){
+  <p class="alert alert-danger mb-0 p-3 w-50 mx-auto text-center">
+    {{ errMsg }}
+  </p>
+  }
+  <h1 class="my-3">Register Now</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="handleForm()">
+    <div class="form-item">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        id="name"
+        class="form-control"
+      />
+      @if(registerForm.get('name')?.errors &&
+      registerForm.get('name')?.touched){
+      <p class="text-danger p-1 small mb-0">
+        @if(registerForm.get('name')?.getError('required')){
+        <span>Name is required</span>
+        } @if(registerForm.get('name')?.getError('minlength')){
+        <span>Min Length of Name 3</span>
+        } @if(registerForm.get('name')?.getError('maxlength')){
+        <span>Max Length of Name 20</span>
+        }
+      </p>
+      }
+    </div>
+    <div class="form-item">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        id="email"
+        class="form-control"
+      />
+      @if(registerForm.get('email')?.errors &&
+      registerForm.get('email')?.touched){
+      <p class="text-danger p-1 small mb-0">
+        @if(registerForm.get('email')?.getError('required')){
+        <span>Email is required</span>
+        } @if(registerForm.get('email')?.getError('email')){
+        <span>Invalid email</span>
+        }
+      </p>
+      }
+    </div>
+    <div class="form-item">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        formControlName="password"
+        id="password"
+        class="form-control"
+      />
+      @if(registerForm.get('password')?.errors &&
+      registerForm.get('password')?.touched){
+      <p class="text-danger p-1 small mb-0">
+        @if(registerForm.get('password')?.getError('required')){
+        <span>Password is required</span>
+        } @if(registerForm.get('password')?.getError('pattern')){
+        <span
+          >* Must start with capital character<br />
+          * Min Length 6 characters<br />
+          * Include special characters</span
+        >
+        }
+      </p>
+      }
+    </div>
+    <div class="form-item">
+      <label for="rePassword">rePassword</label>
+      <input
+        type="password"
+        formControlName="rePassword"
+        id="rePassword"
+        class="form-control"
+      />
+      @if(registerForm.get('rePassword')?.errors &&
+      registerForm.get('rePassword')?.touched){
+      <p class="text-danger p-1 small mb-0">
+        @if(registerForm.get('rePassword')?.getError('required')){
+        <span>rePassword is required</span>
+        } @if(registerForm.get('rePassword')?.getError('mismatch')){
+        <span>Invalid confirm password</span>
+        }
+      </p>
+      }
+    </div>
+    <div class="form-item">
+      <label for="phone">phone</label>
+      <input
+        type="tel"
+        formControlName="phone"
+        id="phone"
+        class="form-control"
+      />
+      @if(registerForm.get('phone')?.errors &&
+      registerForm.get('phone')?.touched){
+      <p class="text-danger p-1 small mb-0">
+        @if(registerForm.get('phone')?.getError('required')){
+        <span>phone is required</span>
+        } @if(registerForm.get('phone')?.getError('pattern')){
+        <span>Enter egypt phone number</span>
+        }
+      </p>
+      }
+    </div>
+
+    <button
+      class="main-btn d-block ms-auto mt-3"
+      [disabled]="registerForm.invalid"
+    >
+      @if(!isLoading){
+      <span>Register</span>
+      } @if (isLoading) {
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+      }
+    </button>
+  </form>
+</section>

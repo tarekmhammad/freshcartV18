@@ -1,0 +1,31 @@
+<section class="w-75 mx-auto rounded shadow bg-main-ligth p-4 my-4">
+  <h2>All Orders</h2>
+  <h3 class="small text-main my-3">
+    Total Price: {{ totalSalary | currency : "E£ " }}
+  </h3>
+  @for (order of orders; track $index) {
+  <div class="row align-items-center">
+    @for (item of order.cartItems; track $index) {
+    <div class="d-flex align-items-center py-2 border-bottom">
+      <div class="col-md-2">
+        <img class="w-100" [src]="item.product.imageCover" alt="image cover" />
+      </div>
+      <div class="col-md-10 ms-3">
+        <h2 class="h5">{{ item.product.title }}</h2>
+        <p class="text-main">{{ item.product.category.name }}</p>
+        <div class="d-flex justify-content-between">
+          <div class="price">
+            <span>{{ item.price | currency : "E£ " }}</span>
+            <p class="mb-0 d-flex align-items-center">
+              <span><i class="fas fa-star rating-color"></i></span>
+              <span>{{ item.product.ratingsAverage }}</span>
+            </p>
+          </div>
+          <span class="d-block text-main">Count: {{ item.count }}</span>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</section>
